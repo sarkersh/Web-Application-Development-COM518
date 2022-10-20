@@ -38,6 +38,32 @@ app.get('/movies/:movie_name', (req, res)=>{
     });
 })
 
+app.get('/movies/:movie_name/year/:year', (req, res)=>{
+    connection.query('select * from movies where name=? and year=?',[req.params.movie_name, req.params.year], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while fetching the data from the database");}
+        else
+            {res.json(results);}
+    });
+});
+
+app.delete('/movies/:movie_name/year/:year', (req, res)=>{
+    connection.query('delete from movies where name=? and year=?',[req.params.movie_name, req.params.year], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while deleting the data from the database");}
+        else
+            {res.json("Selected data got deleted");}
+    });
+});
+app.post('/movies/add', (req, res)=>{
+    connection.query('INSERT INTO movies(name, year) values (?,?)',[req.body.name, req.body.year], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while adding the data into the database");}
+        else
+            {res.json("Given data got updated");}
+    });
+});
+
 var server=app.listen(port, (error)=>{
     if (error)
         console.log("Something went wrong, Server Failed");

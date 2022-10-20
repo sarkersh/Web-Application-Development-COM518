@@ -1,0 +1,60 @@
+const express=require('express');
+const mysql=require('mysql2');
+const app=express();
+var port=5000;
+app.use(express.json());  //treat all the incoming data as json
+const connection=mysql.createConnection({
+    host: 'localhost',
+    user:'root',
+    password:'',
+    database:'test_movie'
+});
+
+connection.connect((error)=>{
+    if (error)
+      {console.log("Mysql connection failed");}
+    else
+        {console.log("Connected to the stated database");}
+});
+app.get('/', (req, res)=>{
+    connection.query('select * from movies',[], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while fetching the data from the database");}
+        else
+            {res.json(results);}
+    });
+});
+
+app.get('/movies/:movie_name', (req, res)=>{
+    connection.query('select * from movies where name=?',[req.params.movie_name], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while fetching the data from the database");}
+        else
+            {res.json(results);}
+    });
+});
+app.get('/movies/:movie_name/year/:year', (req, res)=>{
+    connection.query('select * from movies where name=? and year=?',[req.params.movie_name, req.params.year], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while fetching the data from the database");}
+        else
+            {res.json(results);}
+    });
+});
+
+app.delete('/movies/:movie_name/year/:year', (req, res)=>{
+    connection.query('delete from movies where name=? and year=?',[req.params.movie_name, req.params.year], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while deleting the data from the database");}
+        else
+            {res.json("Selected data got deleted");}
+    });
+});
+app.post('/movies/add', (req, res)=>{
+    connection.query('INSERT INTO movies(name, year) values (?,?)',[req.body.name, req.body.year], (error, results)=>{
+        if (error)
+            {console.log("Something went wrong while adding the data into the database");}
+        else
+            {res.json("Given data got updated");}
+    });
+});
