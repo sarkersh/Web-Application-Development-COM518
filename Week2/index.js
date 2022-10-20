@@ -1,15 +1,42 @@
 const express = require('express');
 const app = express();
 const mysql = require('mysql2');
-var prot = 5000;
+var port = 5000;
 
-const connection =mysql.createConnection({
+const connection = mysql.createConnection({
     host : 'localhost',
     user : 'root',
-    password : 'Shakil2023',
-    database : 'flims'
+    password : '',
+    database : 'flims',
 });
 
+connection.connect((error)=>{
+    if (error){
+        console.log("MySql connection failed");
+    } else {
+        console.log("DB Connected");
+    }
+});
+
+app.get('/', (req, res)=>{
+    connection.query('select * from movies', [], (error, result)=>{
+        if (error){
+            console.log("Something went wrong");
+        } else {
+            res.json(result);
+        }
+    });
+})
+
+app.get('/movies/:movie_name', (req, res)=>{
+    connection.query('select * from movies where name = ?', [req.params.movie_name], (error, result)=>{
+        if (error){
+            console.log("Something went wrong");
+        } else {
+            res.json(result);
+        }
+    });
+})
 
 var server=app.listen(port, (error)=>{
     if (error)
