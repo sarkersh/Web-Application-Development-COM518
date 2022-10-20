@@ -1,4 +1,14 @@
+const express = require('express');
+const app = express();
+const mysql = require('mysql2');
+var prot = 5000;
 
+const connection =mysql.createConnection({
+    host : 'localhost',
+    user : 'root',
+    password : 'Shakil2023',
+    database : 'flims'
+});
 
 
 var server=app.listen(port, (error)=>{
