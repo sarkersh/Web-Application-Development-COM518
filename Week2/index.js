@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     host : 'localhost',
     user : 'root',
     password : '',
-    database : 'flims',
+    database : 'movies',
 });
 
 connection.connect((error)=>{
