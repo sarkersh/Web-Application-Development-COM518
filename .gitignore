@@ -126,3 +126,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 Week1\node_modules
+Week2\node_modules
+webApp\node_modules
+node_modules
