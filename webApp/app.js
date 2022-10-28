@@ -11,7 +11,7 @@ app.get('/hello', (req, res) => {
 });
 
 app.get('/time', (req, res) => {
-    res.send('<h1>Hello World from Express</h1>');
+    res.send(`There have been ${Date.now()} milliseconds since 1/1/70.`);
 });
 
 app.listen(port);
