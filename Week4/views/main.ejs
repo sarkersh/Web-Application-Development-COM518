@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Welcome to Student DB</h1>
+    Enter studen Id: <input type="text" id="input_box" />
+    <input type="button" id="search_button" value="Search" />
+    <div id="" results></div>
+    <script>
+        async function ajax_request(search_id) {
+
+        data_to_print = "";
+
+        const data_in = await fetch(`student/${search_id}`);
+
+        const results = await data_in.json();
+
+        for (var i = 0; i < results.length; i++) {
+          data_to_print +=
+            results[i].id +
+            "---" +
+            results[i].name +
+            "---" +
+            results[i].address;
+        }
+
+        document.getElementById("results").innerHTML = data_to_print;
+      }
+
+      document.getElementById("search_button").addEventListener("click", () => {
+        let search_id = document.getElementById("input_box").value;
+
+        ajax_request(search_id);
+      });
+    </script>
+  </body>
+</html>
