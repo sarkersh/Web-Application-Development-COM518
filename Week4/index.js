@@ -32,8 +32,8 @@ app.get('/', (req, res) => {
 
 app.get('/student/:id', (req, res) => {
     let result = datas.filter(function(stud){return stud.id == req.params.id});
-    res.json(result);
-    console.log(result);
+    res.send(json(result));
+    // console.log(result);
 });
 
 app.listen(port, (err) => {
