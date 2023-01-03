@@ -1,0 +1,33 @@
+{
+  "name": "pointsofinterest",
+  "version": "1.0.1",
+  "description": "Points Of Interest Application",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarkersh/Web-Application-Development-COM518.git"
+  },
+  "keywords": [
+    "login",
+    "register",
+    "node.js",
+    "mysql",
+    "express",
+    "ejs",
+    "nodemon",
+    "dotenv",
+    "passport-local-strategy",
+    "ajax",
+    "and-more-with",
+    "open-street-map"
+  ],
+  "author": "Mohammad Sarker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sarkersh/Web-Application-Development-COM518/issues"
+  },
+  "homepage": "https://github.com/sarkersh/Web-Application-Development-COM518#readme"
+}
