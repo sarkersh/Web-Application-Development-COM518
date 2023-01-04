@@ -1,5 +1,6 @@
 import express from "express";
 import viewEngine from "./config/viewEngine";
+import connection from "./config/dbConnection";
 import initWebRoutes from "./routes/route";
 
 let app = express();
