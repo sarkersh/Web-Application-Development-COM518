@@ -1,12 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>I am a Register Page</h1>
-</body>
+  <head>
+    <%- include ("../partials/header.ejs") %>
+  </head>
+  <body id="page-top">
+    <%- include ("../partials/navigation.ejs") %>
+    <div class="container">
+      <div class="container">
+        <div class="row mt-5 justify-content-center"></div>
+        <div class="col-6 p-4">
+          <form>
+            <fieldset>
+              <legend>Registration Form</legend>
+              <div class="form-group">
+                <label for="fullName" class="form-label">Your full name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  placeholder="Enter your Full Name"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email address:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your email address"
+                />
+              </div>
+              <div class="form-group">
+                <label for="userName" class="form-label">User Name: (*)</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="userName"
+                  placeholder="Enter your username"
+                />
+                <small class="form-text invalid-feedback"
+                  >Invalid username</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="password" class="form-label">Password: (*)</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter your password"
+                />
+                <small class="form-text invalid-feedback"
+                  >Invalid password, require greater than 2 letters</small
+                >
+              </div>
+              <div class="form-group">
+                <label for="passwordConfirmation" class="form-label"
+                  >Confirm password: (*)</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="passwordConfirmation"
+                  placeholder="Enter your confirm password again"
+                />
+                <small class="form-text invalid-feedback"
+                  >Password dosen't match</small
+                >
+              </div>
+
+              <button type="button" id="registerBtn" class="btn btn-primary">
+                Register
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include ("../partials/footer.ejs") %>
+  </body>
 </html>
