@@ -4,7 +4,7 @@
   "description": "Points Of Interest Application",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "start": "nodemon --exec babel-node server.js"
   },
   "repository": {
     "type": "git",
