@@ -1,9 +1,13 @@
 import express from "express";
 import viewEngine from "./config/viewEngine";
+import bodyParser from "body-parser";
 import connection from "./config/dbConnection";
 import initWebRoutes from "./routes/route";
 
 let app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 // config view engine
 viewEngine(app);
