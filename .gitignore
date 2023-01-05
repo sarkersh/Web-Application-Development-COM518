@@ -128,4 +128,7 @@ dist
 Week1\node_modules
 Week2\node_modules
 webApp\node_modules
+classroom\node_modules
+passport-authentication-expressjs\node_modules
+Points of Interest Application\node_modules
 node_modules
