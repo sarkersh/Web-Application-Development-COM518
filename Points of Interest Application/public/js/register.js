@@ -9,7 +9,7 @@ function validateInput(userName, password, passwordConfirmation) {
     const USER_REG = /[a-zA-Z][a-zA-Z0-9_\.]{1,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}/g;
     if(userName.match(USER_REG)) {
         $("#userName").removeClass("is-invalid");
-    } else {//empty email input or invalid email
+    } else {//empty username input or invalid username
         $("#userName").addClass("is-invalid");
     }
 
@@ -64,7 +64,7 @@ function handleClickRegistration() {
                     console.log(data);
                 },
                 error: function(error) {
-                    console.log(err0r);
+                    console.log(error);
                 }
             });
         }

@@ -5,7 +5,7 @@ let getRegister = (req, res) => {
 };
 
 let createNewUser = async (req, res) => {
-    //console.log(req.body);
+    console.log(req.body);
     try {
         let data = {
             fullName: req.body.fullName,
