@@ -31,6 +31,7 @@
   },
   "homepage": "https://github.com/sarkersh/Web-Application-Development-COM518#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
