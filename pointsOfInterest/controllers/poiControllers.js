@@ -17,4 +17,32 @@ const createPoi = async (req, res) => {
     }
 };
 
-module.exports = createPoi;
+// To get all poi data from db
+const getAllPointOfInterests = async (req, res) => {
+try {
+    const rows = await db.query(`SELECT * FROM pointsofinterest`);
+
+    const data = helper.emptyOrRows(rows);
+    res.json(data);
+    return rows;
+} catch (err) {
+    console.log(err);
+}
+};
+  
+// To increment recommendations or post data in recommendation feild on particular id
+const recommendedPoi = async (req, res) => {
+const poiID = req.params.id;
+const { recommendations } = req.body;
+try {
+    await db.query("UPDATE pointsofinterest SET recommendations=? WHERE id=?", [
+    recommendations,
+    poiID,
+    ]);
+    res.send("One user recommended");
+} catch (err) {
+    console.error(err);
+}
+};
+  
+module.exports = { createPoi, getAllPointOfInterests, recommendedPoi };
