@@ -2,7 +2,7 @@ import express from "express";
 import viewEngine from "./config/viewEngine";
 import bodyParser from "body-parser";
 import connection from "./config/dbConnection";
-import initWebRoutes from "./routes/route";
+import initWebRoutes from "./routes/web";
 
 let app = express();
 
