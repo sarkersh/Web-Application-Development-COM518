@@ -1,21 +1,21 @@
-import registerService from "../services/registerService";
+const registerService =require("../services/registerService");
 
-let getRegister = (req, res) => {
+const getRegister = (req, res) => {
     return res.render("register.ejs");
 };
 
-let createNewUser = (req, res) => {
+const createNewUser = async (req, res) => {
     console.log(req.body);
     try {
-        let data = {
-            fullName: req.body.fullName,
+        const data = {
+            fullname: req.body.fullName,
             email: req.body.email,
-            userName: req.body.userName,
+            username: req.body.userName,
             password: req.body.password
         };
-        
+
         //create a new user
-        registerService.createNewUser(data);
+        await registerService.createNewUser(data);
         return res.status(200).json({
             message: "User created Successfully!"
         });

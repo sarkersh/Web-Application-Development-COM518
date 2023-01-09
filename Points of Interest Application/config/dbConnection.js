@@ -8,7 +8,8 @@ let connection = mysql.createConnection({
     password: process.env.DB_PASSWORD
 });
 
-connection.connect(() => {
+connection.connect(function(err) {
+    if(err) throw err;
     console.log("Mysql DataBase Successfully Connected.");
 });
 
