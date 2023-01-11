@@ -45,29 +45,26 @@ function handleClickRegistration() {
 
         //validate input
         let check = validateInput(email, password, passwordConfirmation);
-        console.log(check);
-
         if(!check) {
             //send data to node server with ajax
             //url map to http://localhost/register-new-user
             $.ajax({
                 url: `${window.location.origin}/register-new-user`,
                 method: "POST",
-                data: {
-                    fullName: fullName,
-                    email: email,
-                    userName: userName,
-                    password: password,
-                    passwordConfirmation: passwordConfirmation
-                },
-                success: function(data) {
-                    console.log(data);
-                },
-                error: function(error) {
-                    console.log(error);
-                }
+                data: { fullName: fullName,
+                        email: email,
+                        userName: userName,
+                        password: password,
+                        passwordConfirmation: passwordConfirmation},
+                        success: function(data) {
+                            alert("Successfully created a new account.");
+                            window.location.href = "/login";
+                        },
+                        error: function(error) {
+                            alert("error.responseTest");
+                        }
             });
-        }
+            };
     });  
 };
 

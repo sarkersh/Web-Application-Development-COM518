@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("../partials/header.ejs") %>
+  </head>
+  <title>Login Page</title>
+  <body id="page-top">
+    <%- include ("../partials/navigation.ejs") %>
+    <div class="container">
+      <div class="container">
+        <div class="row mt-5 justify-content-center"></div>
+        <div class="col-6 p-4">
+          <form>
+            <fieldset>
+              <legend>Login Form</legend>
+
+              <div class="form-group">
+                <label for="email" class="form-label">Email address:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Enter your email address" required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="password" class="form-label">Password: </label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  placeholder="Enter your password" required
+                />
+              </div>
+
+              <button type="button" id="loginBtn" class="btn btn-primary">
+                Login
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <%- include ("../partials/footer.ejs") %>
+  </body>
+</html>
