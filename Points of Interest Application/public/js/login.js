@@ -1,30 +1,23 @@
 
-
 function handleLoginBtn(){
-    $("#loginBtn").on("click", function(event){
+    $("#loginBtn").on("click", function(event) {
         event.preventDefault();
-        const email = $("email").val();
-        const password = $("password").val();
+        let email = $("#email").val();
+        let password = $("#password").val();
 
         $.ajax({
             url: `${window.location.origin}/login`,
             method: "POST",
             data: {email: email, password: password},
             success: function(data) {
-                console.log(data);
                 window.location.href = "/";
             },
-            error: function(error) {
-                console.log(error);
-                alert(error);
+            error: function(err) {
+                alert("Your email or password entered is incorrect. Please try again!");
             }
-
         })
     });
-};
-
-
-//jQuery code
-$(document).ready(function(){
+}
+$(document).ready(function() {
     handleLoginBtn();
 });

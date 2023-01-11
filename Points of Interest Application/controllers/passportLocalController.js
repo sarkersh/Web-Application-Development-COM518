@@ -2,29 +2,29 @@ import passport from "passport";
 import passportLocal from "passport-local";
 import loginService from "../services/loginService";
 
-const localStrategy = passportLocal.Strategy;
+let LocalStrategy = passportLocal.Strategy;
 
-const initPassportLocal = () => {
-    passport.use("localLogin", new localStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-    }),
+let initPassportLocal = () => {
+    passport.use("localLogin", new LocalStrategy({
+            usernameField: 'email',
+            passwordField: 'password',
+        },
         async (email, password, done) => {
             try {
                 await loginService.findUserByEmail(email).then(async (user) => {
-                    if(!user) return done(null, false, {message: `Email $(email) dosen't exist!`})
+                    if (!user) return done(null, false, { message: `This user email "${email}" doesn't exist` })
                     if (user) {
                         //compare password
-                        const match = await loginService.compareUserPassword(user, password);
+                        let match = await loginService.compareUserPassword(user, password);
                         if (match === true) return done(null, user, null);
                         return done(null, false, { message: match });
                     }
                 });
-                
-            } catch (e) {
-                return done(null, false, {message:e});
+
+            } catch (err) {
+                return done(null, false, { message: err });
             }
-        });
+        }));
 };
 
 passport.serializeUser((user, done) => {

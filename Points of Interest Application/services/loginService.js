@@ -1,50 +1,48 @@
 import connection from "../config/dbConnection";
+import bcrypt from "bcryptjs";
 
-
-
-const findUserByEmail = (email) => {
-    return new Promise((resolve, reject) => {
-        try{
-            connection.query("SELECT * from poi_users where email = ?", email, function(error, rows) {
-               if(error) reject(error);
-               const user = rows[0];
-               resolve(user);
-            });
-        }catch (e) {
-            reject(e);
-        }
-    });
+let findUserByEmail = (email)=>{
+ return new Promise((resolve, reject) => {
+     try{
+         connection.query("SELECT * from poi_users where email = ?", email, function(error, rows) {
+            if(error) reject(error);
+            let user = rows[0];
+            resolve(user);
+         });
+     }catch (e) {
+         reject(e);
+     }
+ })
 };
 
-const compareUserPassword = (user, password) => {
+let compareUserPassword =  (user, password)=>{
     return new Promise(async (resolve, reject) => {
         try{
-            const match = await bcrypt.compare(password, user.password)
+            let match = await bcrypt.compare(password, user.password);
             if(match) resolve(true);
-            else resolve("Incoorect Password!");
-           
+            else resolve("The password that you've entered is incorrect")
         }catch (e) {
             reject(e);
         }
-    });
+    })
 };
 
-const findUserById = (id) => {
+let findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try{
             connection.query("SELECT * from poi_users where id = ?", id, function(error, rows) {
-               if(error) reject(error);
-               let user = rows[0];
-               resolve(user);
+                if(error) reject(error);
+                let user = rows[0];
+                resolve(user);
             });
         }catch (e) {
             reject(e);
         }
-    });
+    })
 };
 
 module.exports = {
-    findUserByEmail: findUserByEmail,
     compareUserPassword: compareUserPassword,
+    findUserByEmail: findUserByEmail,
     findUserById: findUserById
 };
