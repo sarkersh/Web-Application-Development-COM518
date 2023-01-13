@@ -5,7 +5,19 @@
   </head>
   <body id="page-top">
     <%- include ("../partials/navigation.ejs") %>
-    
+    <div class="container">
+      <div>
+        <h1>Welcome to Points Of Interest Applications</h1>
+        <h1>Welcome: <%= user.fullname %></h1>
+        <div>
+          <form method="POST" action="/logout">
+            <button type="submit" class="btn btn-primary">
+              Log out<output></output>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <%- include ("../partials/footer.ejs") %>
   </body>
