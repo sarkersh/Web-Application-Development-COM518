@@ -2,3 +2,4 @@
 .env
 /public/browser_components
 /pointsOfInterest/view/node_modules
+pointsOfInterest/view/node_modules
