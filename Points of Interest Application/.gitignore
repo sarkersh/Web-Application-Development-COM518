@@ -1,4 +1,4 @@
 /node_modules
 .env
 /public/browser_components
-/view/node_modules
+/pointsOfInterest/view/node_modules
