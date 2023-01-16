@@ -1,48 +1,36 @@
 import connection from "../config/dbConnection";
-import bcrypt from "bcryptjs";
 
-let findUserByEmail = (email)=>{
+
+let findUserByUserName = (username)=>{
  return new Promise((resolve, reject) => {
      try{
-         connection.query("SELECT * from poi_users where email = ?", email, function(error, rows) {
+         connection.connection("SELECT * from poi_users where username = ?", username, function(error, rows) {
             if(error) reject(error);
-            let user = rows[0];
-            resolve(user);
+            let username = rows[0];
+            resolve(username);
          });
-     }catch (e) {
-         reject(e);
+     }catch (error) {
+         reject(error);
      }
  })
 };
 
-let compareUserPassword =  (user, password)=>{
-    return new Promise(async (resolve, reject) => {
-        try{
-            let match = await bcrypt.compare(password, user.password);
-            if(match) resolve(true);
-            else resolve("The password that you've entered is incorrect")
-        }catch (e) {
-            reject(e);
-        }
-    })
-};
 
 let findUserById = (id) => {
     return new Promise((resolve, reject) => {
         try{
             connection.query("SELECT * from poi_users where id = ?", id, function(error, rows) {
                 if(error) reject(error);
-                let user = rows[0];
-                resolve(user);
+                let username = rows[0];
+                resolve(username);
             });
-        }catch (e) {
-            reject(e);
+        }catch (error) {
+            reject(error);
         }
     })
 };
 
 module.exports = {
-    compareUserPassword: compareUserPassword,
-    findUserByEmail: findUserByEmail,
+    findUserByUserName: findUserByUserName,
     findUserById: findUserById
 };

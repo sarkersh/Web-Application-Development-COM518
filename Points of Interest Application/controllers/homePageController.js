@@ -1,6 +1,6 @@
 let getHomePage = (req, res) => {
     return res.render("main.ejs", {
-        user: req.user
+        user: req.username
     })
 };
 

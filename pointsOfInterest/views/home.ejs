@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico" />
+    <link rel="stylesheet" href="../public/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <script defer src="../public/home.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Points Of Interest</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <div class="logo">
+          <a class="logo" href="/">
+            <img src="../public/logo.png" alt="Points of interest" width="120" />
+          </a>
+        </div>
+        <div id="profile-user" class="links-n-profile"></div>
+      </div>
+    </nav>
+
+    <section class="main-section">
+      <h1 class="main-heading">Points Of Interest</h1>
+      <div class="wrap">
+        <div class="search">
+          <input
+            id="searchTerm"
+            type="text"
+            class="searchTerm"
+            onchange="onHandleSubmit()"
+            placeholder="Search by region only..."
+          />
+          <button
+            onsubmit="onHandleSubmit()"
+            type="button"
+            class="searchButton"
+          >
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+      <form id="form-main" class="form-main form-hidden">
+        <h2>Add new point of interest</h2>
+
+        <input
+          id="name"
+          type="text"
+          class="name form-inputs"
+          placeholder="enter poi name"
+          name="name"
+          required
+        />
+        <input
+          id="type"
+          type="text"
+          class="type form-inputs"
+          placeholder="enter type of city"
+          name="type"
+          required
+        />
+        <input
+          id="country"
+          type="text"
+          class="country form-inputs"
+          placeholder="enter poi country"
+          name="country"
+          required
+        />
+        <input
+          id="region"
+          type="text"
+          class="region form-inputs"
+          placeholder="enter poi region"
+          name="region"
+          required
+        />
+
+        <input
+          id="description"
+          type="text"
+          class="description form-inputs"
+          placeholder="enter poi description"
+          name="description"
+          required
+        />
+
+        <button className="form-btn" type="submit">Submit</button>
+      </form>
+      <div id="map"></div>
+      <div id="search-results-wrapper">
+        <div class="search-results">
+          <h3 class="search-results-name">Sanfrancisco</h3>
+          <p class="search-results-location">location: California City, USA</p>
+          <p class="search-results-description">
+            Description: Beautiful City with big tech companies.
+          </p>
+          <p>Recommendations: 0</p>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://kit.fontawesome.com/f3ff0c6b59.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

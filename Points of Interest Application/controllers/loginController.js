@@ -4,19 +4,19 @@ let getLogin = (req, res) => {
   return res.render("login.ejs");
 };
 
-let handleLogin = (req, res,next) => {
-   passport.authenticate("localLogin", function(error, user, info) {
+let handleLogin =async (req, res,next) => {
+   await passport.authenticate("localLogin", function(error, username, info) {
        if (error) {
            return res.status(500).json(error);
        }
-       if (!user) {
+       if (!username) {
            return res.status(401).json(info.message);
        }
-       req.login(user, function (err) {
+       req.login(username, function (err) {
            if (err) {
                return res.status(500).json(error);
            } else {
-               return res.status(200).json(user);
+               return res.status(200).json(username);
            }
        });
    })(req, res, next);

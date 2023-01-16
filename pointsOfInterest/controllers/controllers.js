@@ -1,8 +1,8 @@
-const db = require("../db/db.js");
+const db = require("../dabase/database.js");
 const helper = require("../helper");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const attachCookies = require("../utils/attachCookie.js");
+const attachCookies = require("../middleware/attachCookie.js");
 
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
@@ -61,14 +61,14 @@ const logout = async (req, res) => {
 // To get all poi data from db
 const getAllPointOfInterests = async (req, res) => {
   const { page, limit, search } = req.query;
-  console.log(page, limit, search);
+
   try {
     const pg = Number(page) || 1;
     const lmt = Number(limit) || 10;
     const offset = (pg - 1) * lmt;
     const rows = await db.query(
       search && search.length > 0
-        ? `SELECT * FROM pointsofinterest WHERE region LIKE '${search}%' LIMIT ${lmt} OFFSET ${offset} `
+        ? `SELECT * FROM pointsofinterest WHERE region LIKE '${search}%'`
         : `SELECT * FROM pointsofinterest LIMIT ${lmt} OFFSET ${offset} `
     );
 
@@ -92,23 +92,23 @@ const createPoi = async (req, res) => {
     type,
     country,
     region,
-    lon,
+    lng,
     lat,
     description,
     recommendations,
   } = req.body;
-
-  if (
-    name &&
-    type &&
-    country &&
-    region &&
-    lon &&
-    lat &&
-    description &&
-    recommendations
-  ) {
-    try {
+  // console.log(
+  //   name,
+  //   type,
+  //   country,
+  //   region,
+  //   lng,
+  //   lat,
+  //   description,
+  //   recommendations
+  // );
+  try {
+    {
       const row = await db.query(
         "INSERT INTO pointsofinterest(name, type, country, region, lon, lat, description, recommendations) VALUES('" +
           name +
@@ -119,7 +119,7 @@ const createPoi = async (req, res) => {
           "','" +
           region +
           "','" +
-          lon +
+          lng +
           "','" +
           lat +
           "','" +
@@ -128,45 +128,24 @@ const createPoi = async (req, res) => {
           recommendations +
           "')"
       );
-      res.status(200).send(row);
-    } catch (err) {
-      console.error(err);
+      res.status(200).json({ msg: "Poi created Successfully", row });
     }
+  } catch (err) {
+    res.status(400).json({ err: "Poi creation failed" });
   }
 };
-
-// //generating token on homepage
-// const genTokenHome = async (req, res) => {
-//   const { user } = req.query;
-//   console.log(user);
-//   try {
-//     if (user) {
-//       const [data] = await db.query(
-//         `SELECT * FROM poi_users WHERE username = "${user}"`
-//       );
-//       const token = jwt.sign({ username: data.user }, "secret", {
-//         expiresIn: "1d",
-//       });
-//       console.log(token);
-//       res.json({
-//         token,
-//       });
-//     }
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
 
 // To increment recommendations or post data in recommendation feild on particular id
 const recommendedPoi = async (req, res) => {
   const poiID = req.params.id;
   const { recommendations } = req.body;
+  console.log(poiID, recommendations);
   try {
     await db.query("UPDATE pointsofinterest SET recommendations=? WHERE id=?", [
       recommendations,
       poiID,
     ]);
-    res.send("One user recommended");
+    res.status(200).json("One user recommended");
   } catch (err) {
     console.error(err);
   }

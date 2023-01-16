@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 viewEngine(app);
 
 //Config passport middleware
-app.use(passport.initialize());
+// app.use(passport.initialize());
 app.use(passport.session());
 
 // init all web routes

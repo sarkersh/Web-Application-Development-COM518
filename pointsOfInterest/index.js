@@ -1,6 +1,6 @@
 const express = require("express");
 const session = require("express-session");
-const poiRouter = require("./routes/poiRoutes.js");
+const poiRouter = require("./routes/routes.js");
 const auth = require("./middleware/auth.js");
 const path = require("path");
 const dotenv = require("dotenv");
@@ -22,7 +22,7 @@ const port = process.env.PORT || 9001;
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-// app.use(express.static(path.join(__dirname, "/view/build")));
+app.use(express.static(path.join(__dirname, "/view")));
 app.use(
   express.urlencoded({
     extended: true,
@@ -35,9 +35,13 @@ app.get("/api/v1", (req, res) => {
 app.use("/api/v1/poi", poiRouter);
 
 // To get response on index.html inside view/build
-// app.get("*", function (request, response) {
-//   response.sendFile(path.resolve(__dirname, "./view/build", "index.html"));
-// });
+app.get("/login", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./views/", "login.ejs"));
+});
+
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./views/", "home.ejs"));
+});
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
