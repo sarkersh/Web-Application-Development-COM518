@@ -1,13 +1,13 @@
 const mysql = require("mysql2/promise");
-const config = require("../config");
+// const config = require("../config");
 
 async function query(sql, params) {
   try {
     const connection = await mysql.createConnection({
       host: "localhost",
-      user: "root",
-      password: "",
-      database: "poi",
+      user: "shakil",
+      password: "Shakil2023",
+      database: "webapi",
     });
     const [results] = await connection.execute(sql, params);
     console.log("✅ MySQL DB is connected !!!");

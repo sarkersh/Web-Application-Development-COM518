@@ -1,6 +1,6 @@
 const express = require("express");
 const session = require("express-session");
-const poiRouter = require("./routes/routes.js");
+const poiRouter = require("./routes/routes.js").default;
 const auth = require("./middleware/auth.js");
 const path = require("path");
 const dotenv = require("dotenv");
@@ -22,12 +22,9 @@ const port = process.env.PORT || 9001;
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "/view")));
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
+app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({extended: true}));
 
 app.get("/api/v1", (req, res) => {
   res.json({ msg: "Welcome" });
