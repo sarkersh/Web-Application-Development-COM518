@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('./partials/head.ejs') %>
+
+<body>
+<header class="header">
+
+    <div class="container">
+        <%- include('./partials/nav.ejs') %>
+    </div>
+
+</header>
+<%- include('./partials/mobile-nav.ejs') %>
+<main>
+
+
+    <section class="event-options pt-1">
+
+        <div class="container">
+
+            <h1 class="event-option__heading text-center">Add Point of Interest</h1>
+
+            <div class="event event--options pt-1">
+
+                <div class="contact">
+                    <div class="event__card">
+                        <div class="registration-box">
+                            <form action="/" method="post">
+                                <input name="name" placeholder="enter name" type="text" required>
+                                <input name="type" value="" placeholder="enter type" type="text" required>
+                                <select name="country">
+                                    <option value="USA">USA</option>
+                                    <option value="UK">UK</option>
+                                    <option value="France">France</option>
+                                    <option value="Italy">Italy</option>
+                                    <option value="Germany">Germany</option>
+                                    <option value="Pacific State">Pacific State </option>
+                                    <option value="england">england</option>
+                                    <option value="Pacifica">Pacifica</option>
+                                </select>
+                                <input type="text" name="region" placeholder="region" required />
+                            </form>
+                        </div>
+                    </div>
+                    <div class="event__card">
+                        <div class="registration-box">
+                            <form action="/" method="post">
+                                <input type="number" name="lon" placeholder="longitude" step="0.0001" required />
+                                <input type="number" name="lat" placeholder="latitude" step="0.0001" required />
+                                <input type="text" name="description" placeholder="description" required />
+                                <input value="Submit" class="" type="submit" id="add-poi">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+</main>
+
+<%- include('./partials/footer.ejs') %>
+<script src="/js/poi.js" defer></script>
+
+
+</body>
+
+</html>

@@ -11,12 +11,12 @@ let initPassportLocal = () => {
         },
         async (username, password, done) => {
             try {
-                await loginService.findUserByUserName(username).then( (username) => {
-                    if (!username) return done(null, false, { message: `This user username "${username}" doesn't exist` })
-                    if (username) {
-                        // //compare password
-                        // let match = await loginService.compareUserPassword(username, password);
-                        // if (match === true) return done(null, user, null);
+                await loginService.findUserByUserName(username).then(async (user) => {
+                    if (!user) return done(null, false, { message: `This user username "${username}" doesn't exist` })
+                    if (user) {
+                        //compare password
+                        let match = await loginService.compareUserPassword(user, password);
+                        if (match === true) return done(null, user, null);
                         return done(null, false, { message: match });
                     }
                 });
@@ -27,13 +27,13 @@ let initPassportLocal = () => {
         }));
 };
 
-passport.serializeUser((username, done) => {
-    done(null, username.id);
+passport.serializeUser((user, done) => {
+    done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    loginService.findUserById(id).then((username) => {
-        return done(null, username);
+    loginService.findUserById(id).then((user) => {
+        return done(null, user);
     }).catch(error => {
         return done(error, null)
     });

@@ -8,7 +8,7 @@ function handleLoginBtn(){
         $.ajax({
             url: `${window.location.origin}/login`,
             method: "POST",
-            data: {username: username, password: password},
+            data: {user: username, password: password},
             success: function(data) {
                 window.location.href = "/";
             },

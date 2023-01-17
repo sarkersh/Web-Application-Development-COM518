@@ -5,18 +5,18 @@ let getLogin = (req, res) => {
 };
 
 let handleLogin =async (req, res,next) => {
-   await passport.authenticate("localLogin", function(error, username, info) {
+   await passport.authenticate("localLogin", function(error, user, info) {
        if (error) {
            return res.status(500).json(error);
        }
-       if (!username) {
+       if (!user) {
            return res.status(401).json(info.message);
        }
-       req.login(username, function (err) {
+       req.login(user, function (err) {
            if (err) {
                return res.status(500).json(error);
            } else {
-               return res.status(200).json(username);
+               return res.status(200).json(user);
            }
        });
    })(req, res, next);

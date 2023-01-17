@@ -1,8 +1,8 @@
-const db = require("../dabase/database.js");
+const db = require("../database/database.js");
 const helper = require("../helper");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const attachCookies = require("../middleware/attachCookie.js");
+const attachCookies = require("../utils/attachCookie.js");
 
 const loginUser = async (req, res) => {
   const { username, password } = req.body;
@@ -152,10 +152,10 @@ const recommendedPoi = async (req, res) => {
 };
 
 module.exports = {
-  createPoi,
-  getAllPointOfInterests,
-  recommendedPoi,
-  loginUser,
-  getPoiUser,
-  logout,
+  createPoi:createPoi,
+  getAllPointOfInterests:getAllPointOfInterests,
+  recommendedPoi:recommendedPoi,
+  loginUser:loginUser,
+  getPoiUser:getPoiUser,
+  logout:logout
 };

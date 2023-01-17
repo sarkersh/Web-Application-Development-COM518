@@ -1,10 +1,7 @@
 const jwt = require("jsonwebtoken");
 const authCheck = async (req, res, next) => {
   const { token } = req.cookies;
-  // console.log(token);
-  // if (!token) {
-  //   throw error("Authentication Invalid");
-  // }
+
   try {
     const payload = jwt.verify(token, process.env.JWTSECRET);
     req.user = { username: payload.username };

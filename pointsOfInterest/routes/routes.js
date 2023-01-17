@@ -4,18 +4,18 @@ const {
     recommendedPoi,
     loginUser,
     getPoiUser,
-    logout,
+    logout
   } = require("../controller/controllers.js");
   const express = require("express");
   const authenticateUser = require("../middleware/auth.js");
-  const router = express.Router();
+  const app = express.Router();
   
-  router.route("/createPoi").post(createPoi);
-  router.route("/getAllPoi").get(getAllPointOfInterests);
-  router.route("/getAllPoi/:id").patch(recommendedPoi);
-  router.route("/").get(authenticateUser, getPoiUser);
-  router.route("/login").post(loginUser);
-  router.route("/logout").get(logout);
+  app.route("/createPoi").post(createPoi);
+  app.route("/getAllPoi").get(getAllPointOfInterests);
+  app.route("/getAllPoi/:id").patch(recommendedPoi);
+  app.route("/").get(authenticateUser, getPoiUser);
+  app.route("/login").post(loginUser);
+  app.route("/logout").get(logout);
   
-  module.exports = router;
+  module.exports = app;
   

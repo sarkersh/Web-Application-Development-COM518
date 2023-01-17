@@ -2,7 +2,7 @@
 let username, password, submit, loginurl, currentUser;
 
 loginForm = document.getElementById("login-form");
-loginurl = `http://localhost:9000/api/v1/poi/login`;
+loginurl = `http://localhost:8080/api/v1/poi/login`;
 
 const loginUser = async (currentUser) => {
   console.log(currentUser);

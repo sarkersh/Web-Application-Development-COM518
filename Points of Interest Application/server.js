@@ -1,7 +1,7 @@
 require('dotenv').config();
 import bodyParser from "body-parser";
-import express from "express";
 import cookieParser from "cookie-parser";
+import express from "express";
 import session from "express-session";
 import passport from "passport";
 import viewEngine from "./config/viewEngine";
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 viewEngine(app);
 
 //Config passport middleware
-// app.use(passport.initialize());
+app.use(passport.initialize());
 app.use(passport.session());
 
 // init all web routes

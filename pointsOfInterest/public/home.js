@@ -1,6 +1,6 @@
-const baseUrlApi = "http://localhost:9000/api/v1/poi";
-const baseUrlLogin = "http://localhost:9000/login";
-const baseUrlHome = "http://localhost:9000/";
+const baseUrlApi = "http://localhost:8080/api/v1/poi";
+const baseUrlLogin = "http://localhost:8080/login";
+const baseUrlHome = "http://localhost:8080/";
 let auth = false;
 let search = "";
 let mapEvent, poiRows, position, userlogged;
@@ -64,7 +64,7 @@ const createMap = (map, pos, pois) => {
 };
 
 const searchResults = async () => {
-  // console.log(url);
+ 
   try {
     const res = await fetch(url, { method: "get" });
     const data = await res.json();
