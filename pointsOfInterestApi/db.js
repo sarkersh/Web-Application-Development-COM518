@@ -24,4 +24,4 @@ const conn = async () => {
     }
 }
 
-export default await conn()
+export default await conn();

@@ -4,7 +4,7 @@ class RecommendationDao {
     // table is the table storing the students
     constructor(db) {
         this.db = db
-    }
+    };
 
     //add a recommendation for poi
     addRecommendation= async (poiId) => {
@@ -13,7 +13,7 @@ class RecommendationDao {
         let newCount = 0;
         if(currentCount.length > 0){
             newCount = currentCount[0].recommendations + 1;
-        }
+        };
 
         return new Promise ((resolve, reject) => {
             try {
