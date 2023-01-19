@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Passions+Conflict&display=swap");
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-image: url("loginbg.jpg");
+    }
+
+    /* Full-width input fields */
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      outline-color: #00b4cc;
+      color: #00b4cc;
+    }
+
+    input[type="checkbox"]:checked {
+      accent-color: #00b4cc;
+    }
+
+    input[type="checkbox"]::before {
+      background-color: #fff;
+    }
+
+    /* Set a style for all buttons */
+    button {
+      background-color: #00b4cc;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      border-radius: 50px;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    /* Center the image and position the close button */
+    .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+      position: relative;
+    }
+
+    img.avatar {
+      width: 40%;
+      border-radius: 50%;
+    }
+
+    .container {
+      padding: 16px;
+      width: 250px;
+      margin: 0 auto;
+    }
+
+    .rmfp {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    span.psw {
+      font-size: 11px;
+    }
+
+    span.psw a {
+      color: #00b4cc;
+      text-decoration: none;
+    }
+
+    /* The Modal (background) */
+    .form {
+      display: block;
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: #00b4cc8c;
+      /* Black w/ opacity */
+      padding-top: 60px;
+    }
+
+    /* form Content/Box */
+    .form-content {
+      background-color: #fefefe;
+      margin: 0 auto 15% auto;
+      /* 5% from the top, 15% from the bottom and centered */
+      border: 1px solid #888;
+      /* width: 80%; Could be more or less, depending on screen size */
+      width: 300px;
+      border-radius: 10px;
+      border-top: 5px solid #00b4cc;
+    }
+
+    /* The Close Button (x) */
+
+    /* Add Zoom Animation */
+    .animate {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s;
+    }
+
+    @-webkit-keyframes animatezoom {
+      from {
+        -webkit-transform: scale(0);
+      }
+
+      to {
+        -webkit-transform: scale(1);
+      }
+    }
+
+    @keyframes animatezoom {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
+    }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+      span.psw {
+        display: block;
+        float: none;
+      }
+
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+
+    label {
+      font-size: 13px;
+      color: slategray;
+    }
+
+    .login-heading {
+      text-align: center;
+      font-size: 90px;
+      margin: 15px 0;
+      color: white;
+      opacity: 0.8;
+      z-index: 50;
+      font-family: "Passions Conflict", cursive;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="" class="form">
+    <h2 class="login-heading">Points of Interest</h2>
+    <form id="login-form" class="form-content animate" action="#">
+      <div class="container">
+        <label for="uname">Username</label>
+        <input id="username" type="text" name="uname" required />
+
+        <label for="psw">Password</label>
+        <input id="password" type="password" name="psw" required />
+
+        <button id="login-submit" type="submit">Login</button>
+        <div class="rmfp">
+          <label>
+            <input type="checkbox" checked="checked" name="remember" />
+            Remember me
+          </label>
+
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- <script src="/login.js"></script> -->
+  <script>
+    // listen for form submit event
+    document.getElementById("login-form").addEventListener("submit", async function (event) {
+      event.preventDefault(); // prevent form from submitting
+      // get the form input values
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      // make an API call to the login endpoint
+      const loginResponse = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+      // check if the API call was successful
+      if (loginResponse.status === 200) {
+
+        try {
+          const loginData = await loginResponse.json();
+          localStorage.setItem('logindata', loginData.user.id)
+          console.log('loginData', loginData);
+          // redirect to the '/' path
+          window.location.href = '/';
+        } catch (error) {
+          alert('Enterd credentials are invalid')
+          console.error(error);
+        }
+      } else {
+        // handle the error
+      }
+    });
+  </script>
+</body>
+
+</html>
