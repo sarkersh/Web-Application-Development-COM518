@@ -5,9 +5,9 @@ async function query(sql, params) {
   try {
     const connection = await mysql.createConnection({
       host: "localhost",
-      user: "root",
-      password: "",
-      database: "pointsofinterest",
+      user: "shakil",
+      password: "Shakil2023",
+      database: "webapi",
     });
     const [results] = await connection.execute(sql, params);
     console.log("✅ MySQL DB is connected !!!");
