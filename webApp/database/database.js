@@ -3,7 +3,7 @@ const config = require("../config.js");
 
 async function query(sql, params) {
   try {
-    const connection = await mysql.createConnection({
+    const connection = await createConnection({
       host: "localhost",
       user: "shakil",
       password: "Shakil2023",
@@ -18,6 +18,6 @@ async function query(sql, params) {
   }
 }
 
-module.exports = {
+module.exports= {
   query,
 };

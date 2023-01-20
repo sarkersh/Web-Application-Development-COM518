@@ -1,30 +1,36 @@
 {
-  "dependencies": {
-    "ejs": "^3.1.8",
-    "express": "^4.18.2",
-    "mysql2": "^2.3.3",
-    "bcrypt": "^5.1.0",
-    "concurrently": "^7.6.0",
-    "cookie-parser": "^1.4.6",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.3",
-    "express-session": "^1.17.3",
-    "jsonwebtoken": "^9.0.0",
-    "nodemon": "^2.0.20",
-    "path": "^0.12.7"
-  },
-  "name": "wad-assignment1-v3",
+  "name": "pointsofinterest",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "API Login MYSQL Ajax EJS Openstreetmap etc....",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "install-view": "cd view && npm install",
-    "server": "nodemon server --ignore view",
-    "client": "npm start --prefix view"
+    "start": "nodemon --exec babel-node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sarkersh/Web-Application-Development-COM518.git"
+  },
+  "keywords": [
+    "Login",
+    "Mysql",
+    "Ajax",
+    "etc..."
+  ],
+  "author": "Mohammad Sarker",
   "license": "ISC",
-  "description": ""
+  "bugs": {
+    "url": "https://github.com/sarkersh/Web-Application-Development-COM518/issues"
+  },
+  "homepage": "https://github.com/sarkersh/Web-Application-Development-COM518#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.20"
+  }
 }

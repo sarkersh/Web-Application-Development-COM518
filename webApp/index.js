@@ -1,8 +1,8 @@
-require("dotenv").config;
+required('dotenv').config;
 var express=require('express');
 var app=express();
 var path=require('path')
-const port = process.env.PORT || 5000;
+const port=process.env.PORT;
 require('./database/database.js');
 
 //------M-Model----V-View----C-controller---------------------
@@ -27,8 +27,8 @@ app.get('/login', (req, res)=>{
 });
 app.listen(port, (error)=>{
     if (error)
-      console.log(`Failed to start the Server at port http://localhost:${port}`);
+      console.log(`Failed to start the Server at port ${port}`);
     else
-        console.log(`Server successfully started at port: http://localhost:${port}`);
+        console.log(`Server successfully started at port: ${port}`);
 });
 
