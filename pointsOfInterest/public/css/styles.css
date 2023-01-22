@@ -146,13 +146,13 @@ h2,
 @media (min-width: 1200px) {
   h2,
   .h2 {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 }
 
 h3,
 .h3 {
-  font-size: calc(1.3rem + 0.6vw);
+  color: brown;
 }
 @media (min-width: 1200px) {
   h3,
@@ -711,6 +711,8 @@ progress {
   .container-sm,
   .container {
     max-width: 1320px;
+    color: aliceblue;
+    font-size: xx-large;
   }
 }
 .row {
@@ -11914,7 +11916,7 @@ footer.footer .social-link:hover {
 }
 @media (min-width: 992px) {
   .masthead {
-    height: 100vh;
+    height: 70vh;
   }
   .masthead h1,
   .masthead .h1 {
