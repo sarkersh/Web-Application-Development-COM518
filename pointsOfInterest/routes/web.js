@@ -9,6 +9,10 @@ let initWebRoutes = (app) => {
     router.get("/login", (req, res) => {
         return res.render("login.ejs");
     });
+    router.get('*', (req, res) => {
+        return res.render('404.ejs');
+    });
+    
     return app.use("/", router);
 };
 
