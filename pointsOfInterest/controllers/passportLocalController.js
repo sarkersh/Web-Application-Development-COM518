@@ -12,7 +12,7 @@ let initPassportLocal = () => {
     async (username, password, done) => {
         try {
             await loginService.findUserByUserName(username).then(async (user) => {
-                if (!user) return done(null, false, { message: `This username "${username}" doesn't exist`})
+                if (!user) return done(null, false, { message: `This username ${username} doesn't exist`})
                 if (user) {
                     //compare password
                     let match = await loginService.compareUserPassword(user, password);

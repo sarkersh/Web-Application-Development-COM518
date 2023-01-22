@@ -14,7 +14,7 @@ function handleLoginBtn() {
             },
             error: function(error) {
                 console.log(error);
-                aleart("Your username or password incorrect. Please try again!");
+                alert("Your username or password incorrect. Please try again!");
             }
         });
     });

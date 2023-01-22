@@ -54,5 +54,5 @@ let findUserById = (id) => {
 module.exports = {
     findUserByUserName: findUserByUserName,
     compareUserPassword: compareUserPassword,
-    findUserById: findUserById
+    findUserById: findUserById,
 };
