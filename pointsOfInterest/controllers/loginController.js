@@ -25,5 +25,5 @@ let handleLogin = (req, res, next) => {
   
 module.exports = {
     getLoginPage: getLoginPage,
-    handleLogin: handleLogin,
+    handleLogin: handleLogin
 }

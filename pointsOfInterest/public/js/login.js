@@ -1,6 +1,6 @@
 
 function handleLoginBtn() {
-    $("#login-submit").on("click", function(event) {
+    $("#loginBtn").on("click", function(event) {
         event.preventDefault();
         let username = $("#username").val();
         let password = $("#password").val(); 
