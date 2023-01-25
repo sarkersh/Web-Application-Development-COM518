@@ -1,4 +1,4 @@
-USE mysql; -- change mysql to your database name
+mt_reviewsUSE tca22; -- change mysql to your database name
 
 create table mt_users
 (ID int primary key auto_increment,
