@@ -14,7 +14,7 @@ document.getElementById('btnClimbSearch').addEventListener('click', async() => {
     
     // Q6 complete so that it parses the JSON returned and outputs the
     // data to the climbResults <div> in the format shown on the paper.
-    return json;
+    
 
     // Q8 update with a "like" button - see question paper
         
