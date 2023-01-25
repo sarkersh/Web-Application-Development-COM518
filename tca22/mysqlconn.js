@@ -5,9 +5,9 @@ const mysql = require('mysql2');
 // change this as appropriate if you want to test
 const conn = mysql.createConnection({
     host:'localhost',
-    user: 'user',
-    password: 'password',
-    database: 'mysql'
+    user: 'shakil',
+    password: 'Shakil2023',
+    database: 'tca22'
 });
 
 // Q14 you need to add the full code to use session variables to enable a login system.
