@@ -10,6 +10,9 @@ const conn = mysql.createConnection({
     database:'tcexam23'
 });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 
 //express session
 app.use(session({
@@ -85,7 +88,7 @@ conn.connect( err => {
         const {username, password}=req.body;
         if(username && password){
             try {
-                const[data]= mysql.query(
+                const[data]= conn.query(
                     `SELECT * FROM rusers WHERE username="${username}"`
                 );
                 if (password== data.password){
