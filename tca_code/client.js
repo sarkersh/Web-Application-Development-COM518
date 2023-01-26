@@ -64,6 +64,12 @@ document.getElementById('btnLogin').addEventListener('click', async() => {
 	// Q13 complete these statements to read login details from the form
 	const u = document.getElementById("user").value;
 	const p = document.getElementById("pass").value;
+	fetch(`http://localhost:3000/login?`).then (response => response.json())
+	    .then(json => {
+	// Q12 modify Q9 answer to handle non-200 status codes. Ensure that
+	// user-friendly error messages are displayed to the user in the
+	// 'flightAddStatus' <div>.
+	});
 
 	// Q13 complete the fetch API call to send the data to the login 
 	// route on the server as a POST request... 
