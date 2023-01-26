@@ -56,6 +56,7 @@ conn.connect( err => {
     console.log('Could not connect to database server');
     process.exit(1);
   } else {
+    console.log('Connected to tca_databse ok');
 
 
     // Q4 complete the route to find all flights to the user's chosen 
