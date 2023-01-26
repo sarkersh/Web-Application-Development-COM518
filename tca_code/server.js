@@ -10,6 +10,15 @@ const conn = mysql.createConnection({
     database:'tcexam23'
 });
 
+
+//express session
+app.use(session({
+    secret: "tcexam23-secret",
+    resave: false,
+    saveUninitialized: true
+  }));
+  
+
 // Q14 you need to add the full code to use session variables to enable a login system.
 
 conn.connect( err => {
@@ -17,6 +26,7 @@ conn.connect( err => {
     console.log('Could not connect to database server');
     process.exit(1);
   } else {
+    console.log('db conected!!');
 
     
     
@@ -48,7 +58,7 @@ conn.connect( err => {
                 if(err) {
                     res.status(500).json({'error': 'Internal error'});
                 } else {
-                    res.json({'success': 1});
+                    res.json({'success': 1});i 
                 }
             });
     });
