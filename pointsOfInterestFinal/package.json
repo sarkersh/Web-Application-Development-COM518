@@ -1,5 +1,5 @@
 {
-  "name": "pointsOfInterest",
+  "name": "pointsofinterest",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -30,5 +30,13 @@
   "devDependencies": {
     "express-validator": "^6.13.0",
     "nodemon": "^2.0.20"
-  }
+  },
+  "main": "app.js",
+  "bin": {
+    "pointsofinterest": "bin/www.js"
+  },
+  "keywords": [],
+  "author": "Mohammad Sarker",
+  "license": "ISC",
+  "description": "pointsOfInterest mysql nodejs express ejs passport ajax fetch api etc.."
 }
