@@ -1,10 +1,10 @@
 //import createError from 'http-errors'
+
 import express from 'express';
 import passport from 'passport';
 //import { Strategy as LocalStrategy } from "passport-local";
-import LocalStrategy from 'passport-local';
 
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
 //set the path to the environment variables
 dotenv.config({
     path: './.env'
@@ -18,8 +18,8 @@ const __dirname = new URL('.', import.meta.url).pathname;
 */
 
 
-import path from 'path'
 import cookieParser from 'cookie-parser';
+import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,12 +35,12 @@ const __dirname = path.dirname(__filename);
 
 
 //import route files which define the ejs files and data to pass to the browser
-import indexRouter from'./routes/indexRouter.js';
-import usersRouter from'./routes/usersRouter.js';
-import poiRouter from'./routes/poiRouter.js';
-import mapRouter from'./routes/mapRouter.js';
-import reviewRouter from'./routes/reviewRouter.js';
-import recommendationRouter from'./routes/recommendationRouter.js';
+import indexRouter from './routes/indexRouter.js';
+import mapRouter from './routes/mapRouter.js';
+import poiRouter from './routes/poiRouter.js';
+import recommendationRouter from './routes/recommendationRouter.js';
+import reviewRouter from './routes/reviewRouter.js';
+import usersRouter from './routes/usersRouter.js';
 
 import session from "express-session";
 
@@ -57,6 +57,8 @@ app.set('view engine', 'ejs');
 
 //------app.use(logger('dev'));
 app.use(express.json());
+
+
 
 // to not accept form data
 app.use(express.urlencoded({ extended: true }));
@@ -82,7 +84,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-import passportConfig, {isLoggedIn, isLoggedOut} from './config/passportConfig.js';
+import passportConfig from './config/passportConfig.js';
 passportConfig(passport);
 
 
@@ -96,9 +98,6 @@ app.use((req,res, next)=>{
   next()
 })
 
-
-// end passport related stuff
-//=======================================
 
 //define all the available routes and the router that handle them
 app.use('/', indexRouter);
