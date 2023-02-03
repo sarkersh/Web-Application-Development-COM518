@@ -1,15 +1,11 @@
 <footer class="footer pt-1">
-
   <div class="container footer-container">
-
     <div class="footer-col">
       <h3 class="footer-col__heading">Find Us</h3>
       <ul class="footer-col__list">
         <li>Mobiler: <em>078111111</em></li>
         <li>Email: <em>PointsOfInterest.com</em></li>
-
       </ul>
-
     </div>
 
     <div class="footer-col">
@@ -17,41 +13,64 @@
       <ul class="footer-col__list">
         <li><a href="/" class="desktop-menu__link active">Home</a></li>
         <li><a href="/map" class="desktop-menu__link">Map View</a></li>
-        <li><a href="/poi/add" class="desktop-menu__link">Add Point of Interest</a></li>
+        <li>
+          <a href="/poi/add" class="desktop-menu__link"
+            >Add Point of Interest</a
+          >
+        </li>
         <li>
           <% if (username !== '') { %>
-            <a href="/users/logout" class="desktop-menu__link">Logout</a>
+          <a href="/users/logout" class="desktop-menu__link">Logout</a>
           <% }else{ %>
-            <a href="/users/login" class="desktop-menu__link">Login</a>
+          <a href="/users/login" class="desktop-menu__link">Login</a>
           <% } %>
         </li>
       </ul>
     </div>
 
-
     <div class="footer-col">
       <h3 class="footer-col__heading">Follow us on:</h3>
       <ul class="footer-col__list social">
         <li>
-          <a href="#"><img src="/img/Icon-awesome-facebook.svg" alt="social media">Facebook</a>
+          <a href="#"
+            ><img
+              src="/img/Icon-awesome-facebook.svg"
+              alt="social media"
+            />Facebook</a
+          >
         </li>
         <li>
-          <a href="#"><img src="/img/Icon-awesome-twitter.svg" alt="social media">TwitterLink</a>
+          <a href="#"
+            ><img
+              src="/img/Icon-awesome-twitter.svg"
+              alt="social media"
+            />TwitterLink</a
+          >
         </li>
         <li>
-          <a href="#"><img src="/img/Icon-awesome-linkedin-in.svg" alt="social media">Linkedin</a>
+          <a href="#"
+            ><img
+              src="/img/Icon-awesome-linkedin-in.svg"
+              alt="social media"
+            />Linkedin</a
+          >
         </li>
         <li>
-          <a href="#"><img src="/img/Icon-awesome-instagram.svg" alt="social media">Instagram</a>
+          <a href="#"
+            ><img
+              src="/img/Icon-awesome-instagram.svg"
+              alt="social media"
+            />Instagram</a
+          >
         </li>
-
       </ul>
     </div>
-
   </div>
 
   <div class="container text-center footer__copyright">
-    <p class="pt-1">&copy; PointsOfInterest 2023 </p>
+    <p class="pt-1">&copy; PointsOfInterest 2023</p>
   </div>
-
+  <script src="/js/login.js" defer></script>
+  <script src="/js/poi.js" defer></script>
+  <script type="text/javascript" src="/js/mapping.js"></script>
 </footer>
