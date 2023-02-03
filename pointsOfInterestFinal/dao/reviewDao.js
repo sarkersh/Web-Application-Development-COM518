@@ -5,12 +5,12 @@ class ReviewDao {
     }
 
     addReview = async (reviewData) => {
-        console.log('ooooooooooooooooooooo', reviewData)
+        console.log('Review Added Successfully', reviewData)
 
 
         return new Promise ((resolve, reject) => {
             try {
-                //create a new user
+                //adding review to the db
                 this.db.query("INSERT INTO poi_reviews set ? ", reviewData, function(error, rows){
                     if(error) reject(error);
                     resolve({

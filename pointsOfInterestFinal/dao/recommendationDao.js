@@ -1,7 +1,7 @@
 
 class RecommendationDao {
     // conn is our mysql database connection
-    // table is the table storing the students
+    
     constructor(db) {
         this.db = db
     }
@@ -17,7 +17,7 @@ class RecommendationDao {
 
         return new Promise ((resolve, reject) => {
             try {
-                //create a new user
+                //update table data on mysql
                 this.db.query("update pointsofinterest set recommendations = ? where ID =?", [newCount, poiId], function(error, rows){
                     if(error) reject(error);
                     resolve({
@@ -36,7 +36,7 @@ class RecommendationDao {
 
         return new Promise ((resolve, reject) => {
             try {
-                //create a new user
+                //search data from mysql db at poi homepage for non logged in user
                 this.db.query("select recommendations from pointsofinterest where ID =?",
                     poiId,
                     function(error,results, fields){

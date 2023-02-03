@@ -51,7 +51,7 @@ const app = express();
 app.use(express.json())
 
 
-// set the view engine to ejsp
+// set the view engine to ejs
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
@@ -71,7 +71,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //===================================================
 // for passport
 //===================================================
-//express session
+
 app.use(session({
   secret: "poi-session-secret",
   resave: false,

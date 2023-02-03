@@ -1,7 +1,7 @@
 
 class PoiDao {
     // conn is our mysql database connection
-    // table is the table storing the students
+   
 
     constructor(db) {
         this.db = db
@@ -11,7 +11,7 @@ class PoiDao {
 
         return new Promise ((resolve, reject) => {
             try {
-                //create a new user
+                //adding poi to mysql db for logged in user only
                 this.db.query("INSERT INTO pointsofinterest set ? ", pointOfInterest, function(error, rows){
                     if(error) reject(error);
                     resolve({
