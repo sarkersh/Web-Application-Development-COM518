@@ -8,10 +8,10 @@ let connection = mysql.createConnection({
     password: process.env.DB_PASSWORD
 });
 
-connection.connect(function(err) {
-    if(err) throw err;
-    console.log("✅ MySQL DB is connected !!!");
-});
+// connection.connect(function(err) {
+//     if(err) throw err;
+//     console.log("✅ MySQL DB is connected !!!");
+// });
 connection.on('error', function(err) {
     console.log(err)
     console.log("I'm dead, please setup the env file for connecting to your database! => no connection to your DB");

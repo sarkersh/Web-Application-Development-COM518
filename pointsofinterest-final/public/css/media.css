@@ -5,6 +5,10 @@
         display: block;
     }
 
+    .search-results {
+        min-height: 290px;
+    }
+
     .header #mobile-menu-toggle {
         display: none;
     }

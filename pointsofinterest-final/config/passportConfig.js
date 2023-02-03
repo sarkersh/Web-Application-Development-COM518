@@ -53,4 +53,4 @@ export const isLoggedOut = (req, res, next) => {
     return res.redirect('/');
 }
 
-export default initPassport
+export default initPassport;

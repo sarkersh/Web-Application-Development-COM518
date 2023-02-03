@@ -649,7 +649,9 @@ nav li a{
   color:#fff;
 }
 
-
+.search-results {
+  min-height: 290px;
+}
 
 .desktop-menu a{
     color: var(--secondary-color);
