@@ -13,22 +13,22 @@ let findUserByUserName = (username) => {
                 resolve(user);
             });
         
-        } catch (error) {
-            reject(error);
+        } catch (e) {
+            reject(e);
         }
     })
    
 };
 
 
-let compareUserPassword = (user, password) => {
+let compareUserPassword = (username, password) => {
     return new Promise(async (resolve, reject) => {
         try {
-            let match = await bcrypt.compare(password, user.password);
+            let match = await bcrypt.compare(password, username.password);
             if(match) resolve(true);
             else resolve("The password that you've entered is incorrect!")
-        } catch (error) {
-            reject(error);
+        } catch (e) {
+            reject(e);
         }
     })
    
@@ -43,8 +43,8 @@ let findUserById = (id) => {
                 resolve(user);
             });
         
-        } catch (error) {
-            reject(error);
+        } catch (e) {
+            reject(e);
         }
     })
    

@@ -22,8 +22,30 @@ let handleLogin = (req, res, next) => {
         });
     })(req, res, next);
 };
-  
+let checkLoggedIn = (req, res, next) => {
+    if(!req.isAuthenticated()){
+        return res.redirect("/login");
+    }
+    next();
+};
+
+let checkLoggedOut = (req, res, next) => {
+    if(req.isAuthenticated()){
+        return res.redirect("/");
+    }
+    next();
+};
+
+let postLogOut = (req, res) =>{
+    req.session.destroy(function(err) {
+        return res.redirect("/login");
+    });
+};
+
 module.exports = {
     getLoginPage: getLoginPage,
-    handleLogin: handleLogin
-}
+    handleLogin: handleLogin,
+    checkLoggedIn: checkLoggedIn,
+    checkLoggedOut: checkLoggedOut,
+    postLogOut: postLogOut
+};
