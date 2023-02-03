@@ -20,7 +20,7 @@ const conn = async () => {
         });
 
         const conn = con.connect();
-        console.log('connected to mysql ok');
+        console.log('✅ MySQL DB is connected !!!');
 
         return con
     } catch(e) {
